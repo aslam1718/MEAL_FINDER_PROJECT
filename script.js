@@ -1,5 +1,4 @@
 let categoryList = document.getElementById("categoryList");
-let mealList = document.getElementById("mealList");
 
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((res) => res.json())
@@ -15,7 +14,6 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
         });
 
-        // Add click event to every category
         let categories = document.querySelectorAll(".category");
 
         categories.forEach((category) => {
@@ -25,8 +23,6 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
                 e.preventDefault();
 
                 let categoryName = this.innerText;
-
-                getMeals(categoryName);
 
             });
 
@@ -38,30 +34,3 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     });
 
 
-function getMeals(categoryName) {
-
-    fetch(`https://www.themealdb.com/api/json/v1/1/categories.php}`)
-        .then((res) => res.json())
-        .then((data) => {
-
-            mealList.innerHTML = "";
-
-            data.meals.forEach((meal) => {
-
-                mealList.innerHTML += `
-                    <div class="meal-card">
-
-                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-
-                        <h3>${meal.strMeal}</h3>
-
-                    </div>
-                `;
-
-            });
-
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
