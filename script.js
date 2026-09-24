@@ -1,14 +1,16 @@
 let categoryList = document.getElementById("categoryList");
 let categoryCard = document.getElementById("category-card");
 let search = document.getElementById("search");
-
-let categories = [];
+let mealCard = document.getElementById("meal-card");
+let searchBtn = document.getElementById("searchBtn");
+let categoriesTitle = document.getElementsByClassName("categories-title");
+let mealTitle = document.querySelector(".mealTitle");
 
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((res) => res.json())
     .then((data) => {
-             categories = data.categories;
-        categories.forEach((category) => {
+        // categories = data.categories;
+        data.categories.forEach((category) => {
 
             // Offcanvas category list
             categoryList.innerHTML += `
@@ -58,27 +60,57 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         console.log(error);
     });
 
-    search.addEventListener("input",()=>{
-        let searchValue = search.value.toLowerCase();
-        
-        categoryCard.innerHTML = "";
 
-        categories.forEach((category)=>{
+searchBtn.addEventListener("click", (e) => {
 
-            if(category.strCategory.toLowerCase().includes(searchValue)){
-                categoryCard.innerHTML += `
-                <div class="category-card">
+    e.preventDefault();
 
-                    <a href = ""><img src="${category.strCategoryThumb}" 
-                            alt="${category.strCategory}"></a>
+    let searchValue = search.value.trim();
 
-                    <span class="category-name">
-                        ${category.strCategory}
-                    </span>
+    mealCard.innerHTML = "";
+    mealTitle.innerHTML = "";
 
-                </div>
+    if (searchValue === "") {
+        return;
+    }
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`)
+        .then((res) => res.json())
+        .then((data) => {
+
+            if (!data.meals) {
+                mealTitle.innerHTML = "";
+                mealCard.innerHTML = `
+                    <h2>No meals found</h2>
+                `;
+                return;
+            }
+
+            // MEALS title
+            mealTitle.innerHTML = `
+        <div class="meal-title">
+                    <h1>MEALS</h1>
+                    <div class="meal-line"></div>
+                    </div>
+            
             `;
 
-            }
-        })
-    })
+            // Meal cards
+            data.meals.forEach((meal) => {
+
+                mealCard.innerHTML += `
+                    <a href="#" class="item-click">
+                        <div class="meal-card">
+                            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                            <p>${meal.strArea}</p>
+                            <h5>${meal.strMeal}</h56>
+                            <span class="itemName">${meal.strCategory}</span>
+                        </div>
+                    </a>
+                `;
+
+            });
+
+        });
+
+});
