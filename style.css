@@ -5,7 +5,7 @@
     /* background-color: white; */
 }
 
-.mealFinder{
+.mealFinder {
     text-decoration: none;
     color: white;
 }
@@ -160,10 +160,11 @@ p {
 }
 
 
-.item-click{
+.item-click {
     text-decoration: none;
     color: #111;
 }
+
 #meal-card {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -224,12 +225,12 @@ p {
     color: #E16120;
     padding: 4px 10px;
     border-radius: 10px;
-    font-size: 15px; 
+    font-size: 15px;
     /* font-weight: bold; */
     letter-spacing: 0.5px;
 
     z-index: 2;
-} 
+}
 
 
 /* Category description */
@@ -256,7 +257,7 @@ p {
 /* Meal cards */
 #meal-card {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5, 1fr);
 
 }
 
@@ -266,20 +267,23 @@ p {
     text-align: center;
     margin-bottom: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-
-
 }
 
 .meal img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
 }
 
 .meal h3 {
     font-size: 18px;
     margin-top: 12px;
+}
+
+.hrLine{
+    margin-top: 2px;
+    color: #555;
 }

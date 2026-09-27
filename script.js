@@ -12,16 +12,15 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         data.categories.forEach((category) => {
             // Offcanvas category list
             categoryList.innerHTML += `
-    <a href="second.html?category=${category.strCategory}"
-       class="category">
+    <a href="second.html?category=${category.strCategory}" class="category">
         ${category.strCategory}
     </a>
-    <hr>
+    <hr class="hrLine">
 `;
             // Category cards
             categoryCard.innerHTML += `
                 <div class="category-card">
-                    <a href = "second.html"><img src="${category.strCategoryThumb}" 
+                    <a href = ""><img src="${category.strCategoryThumb}" 
                             alt="${category.strCategory}"></a>
                     <span class="category-name">
                             ${category.strCategory}
