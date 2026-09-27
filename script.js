@@ -9,19 +9,19 @@ let mealTitle = document.querySelector(".mealTitle");
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((res) => res.json())
     .then((data) => {
-        // categories = data.categories;
         data.categories.forEach((category) => {
             // Offcanvas category list
             categoryList.innerHTML += `
-                <a href="" class="category">
-                    ${category.strCategory} 
-                </a>
-                <hr>
-            `;
+    <a href="second.html?category=${category.strCategory}"
+       class="category">
+        ${category.strCategory}
+    </a>
+    <hr>
+`;
             // Category cards
             categoryCard.innerHTML += `
                 <div class="category-card">
-                    <a href = ""><img src="${category.strCategoryThumb}" 
+                    <a href = "second.html"><img src="${category.strCategoryThumb}" 
                             alt="${category.strCategory}"></a>
                     <span class="category-name">
                             ${category.strCategory}
@@ -30,34 +30,13 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
             `;
         });
 
-
-        // Offcanvas category click
-        let categoriesLinks = document.querySelectorAll(".category");
-
-        categoriesLinks.forEach((category) => {
-
-            category.addEventListener("click", function (e) {
-
-                e.preventDefault();
-
-                let categoryName = this.innerText;
-
-                console.log(categoryName);
-
-            });
-
-        });
-
     })
     .catch((error) => {
         console.log(error);
     });
 
-
 searchBtn.addEventListener("click", (e) => {
-
     e.preventDefault();
-
     let searchValue = search.value.trim();
 
     mealCard.innerHTML = "";
@@ -80,16 +59,13 @@ searchBtn.addEventListener("click", (e) => {
                 `;
                 return;
             }
-
             // MEALS title
             mealTitle.innerHTML = `
-        <div class="meal-title">
+                    <div class="meal-title">
                     <h1>MEALS</h1>
                     <div class="meal-line"></div>
-                    </div>
-            
-            `;
-
+                    </div>    
+        `;
             // Meal cards
             data.meals.forEach((meal) => {
 
@@ -109,27 +85,3 @@ searchBtn.addEventListener("click", (e) => {
         });
 
 });
-
-
-// let mealDes = document.getElementById("mealDes");
-
-// category.addEventListener("click",(e)=>{
-//     e.preventDefault()
-
-
-//     fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
-//     .then((res) => res.json())
-//     .then((data) => {
-//         // categories = data.categories;
-//         data.categories.forEach((category) => {
-//             // Offcanvas category list
-//             categoryList.innerHTML += `
-//                 <a href="" class="category">
-//                     ${category.strCategory} 
-//                 </a>
-//                 <hr>
-//             `;
-        
-//         });
-// })
-
