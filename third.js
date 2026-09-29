@@ -42,11 +42,10 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .catch((error) => {
         console.log(error);
     });
-
 const urlParams = new URLSearchParams(window.location.search);
 const mealId = urlParams.get("id");
 
-let randomMeal = document.getElementById("randomMeal"); 
+let randomMeal = document.getElementById("randomMeal");
 
 if (mealId) {
 
@@ -64,34 +63,94 @@ if (mealId) {
             let meal = data.meals[0];
 
             randomMeal.innerHTML = `
-                <div class="meal">
 
-                    <img 
-                        src="${meal.strMealThumb}" 
-                        alt="${meal.strMeal}"
-                    >
+                <div class="meal3">
 
-                    <h2>${meal.strMeal}</h2>
+                    <!-- TOP SECTION -->
+                    <div class="mealTop">
 
-                    <p>Category: ${meal.strCategory}</p>
+                        <!-- IMAGE -->
+                        <div class="imageBox">
+                            <img
+                                src="${meal.strMealThumb}"
+                                alt="${meal.strMeal}"
+                                class="img1"
+                            >
+                        </div>
 
-                    <p>Area: ${meal.strArea}</p>
 
-                    <p>Tags: ${meal.strTags || "No tags"}</p>
+                        <!-- RIGHT DETAILS -->
+                        <div class="mealDetails">
 
-                    <h3>Instructions</h3>
+                            <h2 class="head2">
+                                ${meal.strMeal}
+                            </h2>
 
-                    <p>${meal.strInstructions}</p>
+                            <p class="cat1">
+                                <b>CATEGORY:</b>
+                                ${meal.strCategory}
+                            </p>
 
-                    <h3>Ingredients</h3>
+                            <p class="source">
+                                <b>Source:</b>
+                                ${meal.strSource || "No source available"}
+                            </p>
 
-                    <ul>
-                        ${getIngredients(meal)}
-                    </ul>
+                            <p class="tags">
+                                <b>Tags:</b>
 
-                    <a href="${meal.strYoutube}" target="_blank">
-                        Watch Recipe
-                    </a>
+                                ${
+                                    meal.strTags
+                                    ? `<span>${meal.strTags}</span>`
+                                    : `<span>No tags</span>`
+                                }
+                            </p>
+
+
+                            <!-- INGREDIENTS -->
+                            <div class="ingredientBox">
+
+                                <h3 class="ing">
+                                    Ingredients
+                                </h3>
+
+                                <ul class="getIng">
+                                    ${getIngredients(meal)}
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MEASURE SECTION -->
+                    <div class="measureSection">
+
+                        <h4>
+                            Measure:
+                        </h4>
+
+                        <div class="measureBox">
+                            ${getMeasures(meal)}
+                        </div>
+
+                    </div>
+
+
+                    <!-- INSTRUCTIONS -->
+                    <div class="instructionSection">
+
+                        <h4>
+                            Instructions:
+                        </h4>
+
+                        <div class="instruct">
+                            ${getInstructions(meal.strInstructions)}
+                        </div>
+
+                    </div>
 
                 </div>
             `;
@@ -108,9 +167,35 @@ if (mealId) {
 }
 
 
+/* INGREDIENTS */
+
 function getIngredients(meal) {
 
     let ingredients = "";
+
+    for (let i = 1; i <= 20; i++) {
+
+        let ingredient = meal[`strIngredient${i}`];
+
+        if (ingredient && ingredient.trim() !== "") {
+
+            ingredients += `
+                <li>${ingredient}</li>
+            `;
+        }
+    }
+
+    return ingredients;
+}
+
+
+/* =================================
+   MEASURES
+================================= */
+
+function getMeasures(meal) {
+
+    let measures = "";
 
     for (let i = 1; i <= 20; i++) {
 
@@ -119,12 +204,42 @@ function getIngredients(meal) {
 
         if (ingredient && ingredient.trim() !== "") {
 
-            ingredients += `
-                <li>${measure} ${ingredient}</li>
+            measures += `
+                <div class="measureItem">
+                    <span>🔪</span>
+                    ${measure || ""}
+                </div>
             `;
-
         }
     }
 
-    return ingredients;
+    return measures;
+}
+
+
+/* =================================
+   INSTRUCTIONS
+================================= */
+
+function getInstructions(instructions) {
+
+    let steps = instructions
+        .split(/\r?\n/)
+        .filter(step => step.trim() !== "");
+
+    return steps.map(step => {
+
+        return `
+            <div class="instructionItem">
+
+                <span class="check">☑</span>
+
+                <span>
+                    ${step}
+                </span>
+
+            </div>
+        `;
+
+    }).join("");
 }
