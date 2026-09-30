@@ -103,6 +103,7 @@ input {
     color: #333;
     padding: 10px 0;
     font-size: 18px;
+    margin-top: -15px;
 }
 
 .category:hover {
@@ -174,6 +175,9 @@ input {
     color: #111;
 }
 
+
+/* second Page */
+
 #meal-card {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -201,12 +205,11 @@ input {
 }
 
 .meal-card p {
-    /* padding: 0 15px 10px; */
     color: #E16120;
 }
 
 .meal-line {
-    width: 82px;
+    width: 62px;
     height: 4px;
     background-color: #E16120;
     margin-top: 10px;
@@ -216,10 +219,10 @@ input {
     padding: 20px;
 }
 
-.mealTitle h1 {
+.mealTitle h4 {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
+    /* font-size: 26px; */
     font-weight: 700;
     letter-spacing: 3px;
     color: #111;
@@ -241,7 +244,7 @@ input {
     z-index: 2;
 }
 
-/* second Page */
+
 
 /* Category description */
 .category-description {
@@ -269,11 +272,14 @@ input {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 
+    /* display: flex;
+    flex-wrap: wrap; */
+
 }
 
 .meal {
-    width: 300px;
-    height: 260px;
+    width: 275px;
+    height: 270px;
     text-align: center;
     margin-bottom: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
@@ -292,7 +298,10 @@ input {
     font-size: 18px;
     margin-top: 12px;
 }
-
+.mealItems{
+    text-decoration: none;
+    color: black;
+}
 .hrLine {
     margin-top: 2px;
     color: #555;

@@ -3,15 +3,11 @@ let mealCard = document.getElementById("meal-card");
 let mealTitle = document.querySelector(".mealTitle");
 let mealDes = document.getElementById("mealDes");
 
-
-// 1. Get category from URL
+// Get category from URL
 const urlParams = new URLSearchParams(window.location.search);
 const categoryName = urlParams.get("category");
 
-// console.log("Category:", categoryName);
-
-
-// 2. Load category menu
+//  Load category menu
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((res) => res.json())
     .then((data) => {
@@ -21,8 +17,9 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
 
             categoryList.innerHTML += `
                 <a href="second.html?category=${encodeURIComponent(category.strCategory)}"
-                    class="category">
+                    class="category"><h6>
                     ${category.strCategory}
+                    </h6>
                 </a>
 
                 <hr class="hrLine">
@@ -31,13 +28,13 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         });
 
 
-        // 3. Find selected category
+        //  Find selected category
         const selectedCategory = data.categories.find(
             (category) => category.strCategory === categoryName
         );
 
 
-        // 4. Show category description
+        //  Show category description
         if (selectedCategory) {
 
             mealDes.innerHTML = `
@@ -73,18 +70,14 @@ if (categoryName) {
             mealTitle.innerHTML = `
                 <div class="meal-title">
 
-                    <h1>MEALS</h1>
+                    <h4>MEALS</h4>
 
                     <div class="meal-line"></div>
 
                 </div>
             `;
-
-
             // 7. Clear meal cards
             mealCard.innerHTML = "";
-
-
             // 8. Check if meals exist
             if (!data.meals) {
 
