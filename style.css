@@ -573,11 +573,85 @@ input {
     color: #E16120;
 }
 
-
-
 .meal-line2 {
     width: 120px;
     height: 4px;
     background-color: #E16120;
     margin-top: 10px;
+}
+
+
+/* RESPONSIVE DESIGN */
+
+/* TABLET */
+@media (max-width: 992px) {
+
+nav {
+    padding: 5px 20px;
+}
+
+nav img {
+    width: 55px;
+}
+
+.div2 {
+    padding: 180px 30px;
+}
+
+.div2 h1 {
+    font-size: 38px;
+}
+
+input {
+    width: 350px;
+}
+
+/* Categories */
+#category-card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    width: 100%;
+}
+
+/* Meals */
+#meal-card {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.meal {
+    width: 100%;
+}
+
+    /* Meal Details */
+.mealTop {
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.imageBox {
+    padding-right: 0;
+}
+
+.img1 {
+    height: 400px;
+}
+
+.mealDetails {
+    padding-left: 0;
+}
+
+/* Ingredients */
+.getIng {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Measures */
+.measureBox {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    }
 }
