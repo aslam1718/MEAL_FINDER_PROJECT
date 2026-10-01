@@ -655,3 +655,216 @@ input {
     column-gap: 20px;
     }
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+nav {
+    padding: 5px 15px;
+}
+
+nav img {
+    width: 50px;
+}
+
+.mealFinder h2 {
+    font-size: 22px;
+    margin-top: 8px;
+}
+
+button i {
+    font-size: 22px;
+}
+
+/* Banner */
+section {
+    height: 500px;
+}
+
+.div2 {
+    padding: 150px 15px;
+    line-height: 50px;
+}
+
+.div2 h1 {
+    font-size: 32px;
+    margin: 10px;
+}
+
+.div2 p {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+input {
+    width: 75%;
+    height: 48px;
+    font-size: 16px;
+    margin-right: 5px;
+    padding: 15px;
+}
+
+.div2 i {
+    width: 45px;
+    height: 45px;
+    padding: 13px;
+}
+
+/* Categories */
+.categories-title {
+    padding: 15px;
+}
+
+.categories-title h4 {
+    font-size: 20px;
+}
+
+#category-card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+}
+
+.category-card {
+    width: 100%;
+    height: 160px;
+}
+
+.category-name {
+    font-size: 11px;
+    padding: 4px 7px;
+}
+
+/* Category Description */
+.category-description {
+    margin: 10px;
+    padding: 15px;
+}
+
+.category-description h2 {
+    font-size: 24px;
+}
+
+.category-description p {
+    font-size: 14px;
+}
+
+/* Meals */
+#meal-card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+}
+
+.meal {
+    width: 100%;
+    height: auto;
+    min-height: 230px;
+}
+
+.meal img {
+    height: 160px;
+}
+
+.meal h3 {
+    font-size: 16px;
+    margin: 10px 5px;
+}
+
+.mealTitle {
+    padding: 15px;
+}
+
+.mealTitle h4 {
+    font-size: 20px;
+}
+
+/* Meal Details */
+#randomMeal {
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+.meal3 {
+    padding: 20px;
+}
+
+.mealTop {
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.imageBox {
+    padding-right: 0;
+}
+
+.img1 {
+    height: 300px;
+}
+
+.mealDetails {
+    padding-left: 0;
+}
+
+.head2 {
+    font-size: 22px;
+}
+
+.cat1 {
+        font-size: 16px;
+    }
+
+.source {
+    font-size: 17px;
+}
+
+.tags {
+    font-size: 17px;
+}
+
+/* Ingredients */
+.ing {
+    font-size: 19px;
+}
+
+.getIng {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.getIng li {
+    font-size: 16px;
+}
+
+/* Measures */
+.measureSection {
+    padding: 10px;
+}
+
+.measureBox {
+    grid-template-columns: 1fr;
+    padding: 15px;
+    gap: 10px;
+}
+
+.measureItem {
+    padding: 15px;
+    height: auto;
+    font-size: 16px;
+}
+
+/* Instructions */
+.instructionSection h4 {
+    font-size: 20px;
+}
+
+.instructionItem {
+    font-size: 16px;
+    gap: 6px;
+}
+
+.check {
+    font-size: 16px;
+    }
+}
+
