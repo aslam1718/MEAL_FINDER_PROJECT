@@ -42,6 +42,9 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .catch((error) => {
         console.log(error);
     });
+
+
+
 const urlParams = new URLSearchParams(window.location.search);
 const mealId = urlParams.get("id");
 
@@ -62,14 +65,12 @@ if (mealId) {
 
             let meal = data.meals[0];
 
+            let home = document.getElementById("mealname")
+            home.innerHTML=`${meal.strMeal}`
             randomMeal.innerHTML = `
 
                 <div class="meal3">
-
-                    <!-- TOP SECTION -->
                     <div class="mealTop">
-
-                        <!-- IMAGE -->
                         <div class="imageBox">
                             <img
                                 src="${meal.strMealThumb}"
@@ -77,9 +78,6 @@ if (mealId) {
                                 class="img1"
                             >
                         </div>
-
-
-                        <!-- RIGHT DETAILS -->
                         <div class="mealDetails">
 
                             <h2 class="head2">
@@ -87,12 +85,12 @@ if (mealId) {
                             </h2>
 
                             <p class="cat1">
-                                <b>CATEGORY:</b>
+                                <b>CATEGORY :</b>
                                 ${meal.strCategory}
                             </p>
 
                             <p class="source">
-                                <b>Source:</b>
+                                <b>Source :</b>
                                 ${meal.strSource || "No source available"}
                             </p>
 
@@ -106,8 +104,6 @@ if (mealId) {
                                 }
                             </p>
 
-
-                            <!-- INGREDIENTS -->
                             <div class="ingredientBox">
 
                                 <h3 class="ing">
@@ -124,8 +120,6 @@ if (mealId) {
 
                     </div>
 
-
-                    <!-- MEASURE SECTION -->
                     <div class="measureSection">
 
                         <h4>
@@ -138,8 +132,6 @@ if (mealId) {
 
                     </div>
 
-
-                    <!-- INSTRUCTIONS -->
                     <div class="instructionSection">
 
                         <h4>
@@ -189,9 +181,7 @@ function getIngredients(meal) {
 }
 
 
-/* =================================
-   MEASURES
-================================= */
+/* MEASURES */
 
 function getMeasures(meal) {
 
@@ -206,8 +196,11 @@ function getMeasures(meal) {
 
             measures += `
                 <div class="measureItem">
-                    <span>🔪</span>
+                <p>
+                    <span><img src="spoon.png" alt="" class="spoon"></span>
                     ${measure || ""}
+                    <span>${ingredient}</span>
+                    </p>
                 </div>
             `;
         }
@@ -217,9 +210,7 @@ function getMeasures(meal) {
 }
 
 
-/* =================================
-   INSTRUCTIONS
-================================= */
+/* INSTRUCTIONS */
 
 function getInstructions(instructions) {
 
