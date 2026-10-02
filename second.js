@@ -7,7 +7,6 @@ let mealDes = document.getElementById("mealDes");
 const urlParams = new URLSearchParams(window.location.search);
 const categoryName = urlParams.get("category");
 
-//  Load category menu
 fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((res) => res.json())
     .then((data) => {
@@ -21,10 +20,8 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
                     ${category.strCategory}
                     </h6>
                 </a>
-
                 <hr class="hrLine">
             `;
-
         });
 
 
@@ -57,7 +54,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     });
 
 
-// 5. Get meals for selected category
+//Get meals for selected category
 if (categoryName) {
 
     fetch(
@@ -76,9 +73,9 @@ if (categoryName) {
 
                 </div>
             `;
-            // 7. Clear meal cards
+
             mealCard.innerHTML = "";
-            // 8. Check if meals exist
+
             if (!data.meals) {
 
                 mealCard.innerHTML = `
@@ -89,27 +86,25 @@ if (categoryName) {
 
                 return;
             }
-            // 9. Display meals
+            //Display meals
             data.meals.forEach((meal) => {
 
                 mealCard.innerHTML += `
 
-<a href="third.html?id=${meal.idMeal}" class="mealItems">
-                    <div class="meal">
+                    <a href="third.html?id=${meal.idMeal}" class="mealItems">
+                        <div class="meal">
 
-                        <img src="${meal.strMealThumb}" 
-                                alt="${meal.strMeal}">
+                            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
 
-                        <h3>${meal.strMeal}</h3>
+                            <h3>${meal.strMeal}</h3>
 
-                    </div>
+                        </div>
                     </a>
                 `;
 
             });
 
-        })
-        .catch((error) => {
+        }).catch((error) => {
             console.log(error);
         });
 }

@@ -442,7 +442,7 @@ input {
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px 12px;
+    gap: 10px 20px;
 
     counter-reset: ingredient;
 }
@@ -452,7 +452,7 @@ input {
     color: white;
     font-size: 17px;
     line-height: 1.1;
-    padding-left: 17px;
+    padding-left: 25px;
 }
 
 .getIng li::before {
@@ -463,9 +463,9 @@ input {
     left: 0;
     top: 0;
 
-    width: 15px;
-    height: 15px;
-
+    width: 22px;
+    height: 20px;
+    padding: 2px;
     border: 1px solid white;
     border-radius: 50%;
     background-color: rgb(37, 150, 199);

@@ -8,9 +8,9 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((res) => res.json())
     .then((data) => {
         data.categories.forEach((category) => {
-            // Offcanvas category list
-    categoryList.innerHTML += `
-    <a href="second.html?category=${encodeURIComponent(category.strCategory)}"
+        
+            categoryList.innerHTML += `
+    <a href=""
     class="category">
 
         ${category.strCategory}
@@ -20,7 +20,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     <hr class="hrLine">
 `;
             // Category cards
-        categoryCard.innerHTML += `
+            categoryCard.innerHTML += `
     <div class="category-card">
 
         <a href="second.html?category=${encodeURIComponent(category.strCategory)}">
@@ -66,7 +66,14 @@ if (mealId) {
             let meal = data.meals[0];
 
             let home = document.getElementById("mealname")
-            home.innerHTML=`${meal.strMeal}`
+            home.innerHTML = `${meal.strMeal}`
+
+            mealTitle.innerHTML = `
+                    <div class="meal-title">
+                    <h2>MEALS DETAILS</h2>
+                    <div class="meal-line2"></div>
+                    </div>    
+        `;
             randomMeal.innerHTML = `
 
                 <div class="meal3">
@@ -97,11 +104,10 @@ if (mealId) {
                             <p class="tags">
                                 <b>Tags:</b>
 
-                                ${
-                                    meal.strTags
-                                    ? `<span>${meal.strTags}</span>`
-                                    : `<span>No tags</span>`
-                                }
+                                ${meal.strTags
+                    ? `<span>${meal.strTags}</span>`
+                    : `<span>No tags</span>`
+                }
                             </p>
 
                             <div class="ingredientBox">
@@ -223,7 +229,7 @@ function getInstructions(instructions) {
         return `
             <div class="instructionItem">
 
-                <span class="check">☑</span>
+                <span class="check"><p><i class="fa-solid fa-check" id="rightmark"></i></p></span>
 
                 <span>
                     ${step}

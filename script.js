@@ -11,40 +11,35 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((data) => {
         data.categories.forEach((category) => {
             // Offcanvas category list
-    categoryList.innerHTML += `
+            categoryList.innerHTML += `
     <a href="second.html?category=${encodeURIComponent(category.strCategory)}"
-    class="category">
-
-        ${category.strCategory}
-
+    class="category"><h6>
+                        ${category.strCategory}
+                    </h6>
     </a>
-
     <hr class="hrLine">
 `;
             // Category cards
-        categoryCard.innerHTML += `
+            categoryCard.innerHTML += `
     <div class="category-card">
 
         <a href="second.html?category=${encodeURIComponent(category.strCategory)}">
 
-            <img src="${category.strCategoryThumb}" 
-                alt="${category.strCategory}">
+            <img src="${category.strCategoryThumb}" alt="${category.strCategory}">
 
         </a>
 
-        <span class="category-name">
-            ${category.strCategory}
-        </span>
+        <span class="category-name">${category.strCategory}</span>
 
-    </div>
-`;
-        });
-
-    })
-    .catch((error) => {
-        console.log(error);
+    </div>`;
     });
 
+})
+.catch((error) => {
+        console.log(error);
+});
+
+// Searching meals
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
     let searchValue = search.value.trim();
@@ -69,6 +64,7 @@ searchBtn.addEventListener("click", (e) => {
                 `;
                 return;
             }
+
             // MEALS title
             mealTitle.innerHTML = `
                     <div class="meal-title">
@@ -76,6 +72,7 @@ searchBtn.addEventListener("click", (e) => {
                     <div class="meal-line"></div>
                     </div>    
         `;
+        
             // Meal cards
             data.meals.forEach((meal) => {
 
